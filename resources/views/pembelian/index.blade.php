@@ -1,0 +1,70 @@
+@extends('layouts.utama')
+
+@section('contentheader')
+<h1>
+  Barang
+</h1>
+<ol class="breadcrumb">
+  <li class="active"><a href="/admin/barang"><i class="fa fa-home"></i> Content</a></li>
+</ol>
+@endsection
+
+@section('content')
+<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Data pembelian</h3><br>
+        <a href="/admin/pembelian/create" class="btn btn-primary">Create</a>
+        <a href="/admin/pembelian" class="btn btn-success"> <i class="fa fa-refresh"></i> Refresh</a>
+      </div>
+      <!-- /.box-header -->
+      <div class="box-body table-responsive no-padding">
+        <form class="" action="/" method="post">
+            <table class="table table-hover">
+              <tr>
+                <th>Invoice Code</th>
+                <th>Nama Konsumen</th>
+                <th>No Whatsapp</th>
+                <th>Pengiriman</th>
+                <th>No Resi</th>
+                <th>Nama Barang</th>
+                <th>Jumlah Barang</th>
+                <th>Harga Akhir</th>
+                <th>Status Pembayaran</th>
+                <th>Status Pengiriman</th>
+                <th>Action</th>
+              </tr>
+              @foreach($data as $c)
+              <tr>
+                <td>@if($c->invoice_code <= 9) 00{{$c->invoice_code}} @elseif($c->invoice_code <= 99) 0{{$c->invoice_code}} @elseif($c->invoice_code <= 999) {{$c->invoice_code}} @endif</td>
+                <td>{{$c->nama}}</td>
+                <td>{{$c->no_hp}}</td>
+                <td>{{$c->no_hp}}</td>
+                <td>{{$c->resi}}</td>
+                <td>{{$c->barang['nama_barang']}}</td>
+                <td>{{$c->jumlah_barang}}</td>
+                <td>Rp. {{$c->hargatotal}}</td>
+                <td> @if($c->status == "0")
+                  <span class="label label-warning">Pending</span>
+                  @elseif($c->status == "1")
+                  <span class="label label-success">Lunas</span>
+                  @endif</td>
+                <td> @if($c->status_pengiriman == "0")
+                    <span class="label label-warning">Pending</span>
+                    @elseif($c->status_pengiriman == "1")
+                    <span class="label label-success">Lunas</span>
+                    @endif</td>
+                <td><a href="/admin/pembelian/{{$c->invoice_code}}/edit" class="btn btn-warning"> <i class="fa fa-pencil"></i> </a> | <a href="{{url('admin/pembelian/delete',$c->invoice_code)}}" class="btn btn-danger"> <i class="fa fa-trash"></i></a> |
+                <a href="https://api.whatsapp.com/send?phone={{$c->no_hp}}&text=Detail pembayaran anda :%0D%0A%0D%0AInvoice code : @if($c->invoice_code <= 9) 00{{$c->invoice_code}} @elseif($c->invoice_code <= 99) 0{{$c->invoice_code}} @elseif($c->invoice_code <= 999) {{$c->invoice_code}} @endif%0D%0ANama: {{$c->nama}}%0D%0AAlamat: {{$c->alamat}}%0D%0ABarang : {{$c->barang['nama_barang']}}%0D%0AJumlah barang : {{$c->jumlah_barang}}%0D%0AJumlah yang harus dibayar : Rp {{$c->hargatotal}}%0D%0A%0D%0AHarap segera bayar sesuai dengan jumlah yang harus dibayar.%0D%0A%0D%0ABCA 4383140377%0D%0ABMS 7140319777%0D%0ABNI 1403197707%0D%0AA.N Mohamad Ali Guntur%0D%0A%0D%0ASilahkan balas pesan ini untuk melakukan konfirmasi pembayaran dengan cara ketik konfirmasi#order dan sertakan bukti transfer.%0D%0A%0D%0ANote : *gambar bukti transfer jangan diberi caption.*" class="btn btn-success"> <i class="fa fa-whatsapp"></i></a></td>
+              </tr>
+              @endforeach
+            </table>
+        </form>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+  </div>
+</div>
+@endsection

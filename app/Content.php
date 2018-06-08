@@ -1,0 +1,15 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Content extends Model
+{
+    protected $table = 'isicontent';
+    public $timestamps = false;
+    public function broadcast()
+    {
+      return $this->belongsTo('App\Broadcast','broadcast_id','id');
+    }
+}
