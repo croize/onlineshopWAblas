@@ -26,7 +26,7 @@
                 <th>Invoice Code</th>
                 <th>Nama Konsumen</th>
                 <th>No Whatsapp</th>
-                <th>Pengiriman</th>
+                <th>Pembayaran</th>
                 <th>No Resi</th>
                 <th>Nama Barang</th>
                 <th>Jumlah Barang</th>
@@ -40,7 +40,7 @@
                 <td>@if($c->invoice_code <= 9) 00{{$c->invoice_code}} @elseif($c->invoice_code <= 99) 0{{$c->invoice_code}} @elseif($c->invoice_code <= 999) {{$c->invoice_code}} @endif</td>
                 <td>{{$c->nama}}</td>
                 <td>{{$c->no_hp}}</td>
-                <td>{{$c->no_hp}}</td>
+                <td>@if($c->pembayaran == "BCA") BCA @elseif($c->pembayaran == "BNI") BNI @elseif($c->pembayaran == "MS") Mandiri Syariah @endif</td>
                 <td>{{$c->resi}}</td>
                 <td>{{$c->barang['nama_barang']}}</td>
                 <td>{{$c->jumlah_barang}}</td>

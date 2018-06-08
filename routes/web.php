@@ -43,6 +43,7 @@ Route::resource('mitra/datapembelian','DatapembelianController');
 Route::resource('mitra/barang','MitrabarangController');
 Route::get('mitra/barang/delete/{id}','MitrabarangController@destroy');
 Route::resource('mitra/resi','ResiController');
+Route::get('mitra/print/{id}','DatapembelianController@print');
 
 //Konsumen pembelian
 Route::resource('pembelian','KonsumenbeliController');

@@ -112,6 +112,12 @@ class DatapembelianController extends Controller
       return redirect('mitra/datapembelian');
     }
 
+    public function print(Request $request,$id)
+    {
+      $data = Pembelian::find($id);
+      return view('mitra.print',compact('data'));
+    }
+
     /**
      * Remove the specified resource from storage.
      *

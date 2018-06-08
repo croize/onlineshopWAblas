@@ -111,13 +111,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                         <div class="form-group">
                             <div class="form-row">
-                              <div class="form-group col-md-8">
+                              <div class="form-group col-md-4">
                                 <label for="nama">Nama Barang</label>
                                     <select class="form-control" name="barang_id">
                                       <option value="">Pilih barang</option>
                                       @foreach($data as $c)
                                       <option value="{{$c->id}}">{{$c->nama_barang}}</option>
                                       @endforeach
+                                    </select>
+                              </div>
+                              <div class="form-group col-md-4">
+                                <label for="nama">Jenis Pembayaran</label>
+                                    <select class="form-control" name="barang_id">
+                                      <option value="">Pilih pembayaran</option>
+                                      <option value="BCA">BCA</option>
+                                      <option value="BNI">BNI</option>
+                                      <option value="MS">Mandiri Syariah</option>
                                     </select>
                               </div>
                               <div class="form-group col-md-4">

@@ -174,6 +174,7 @@ class PembelianController extends Controller
         $var->no_hp = $request->no_hp;
         $var->ongkir = $request->ongkir;
         $var->status = $request->status;
+        $var->pembayaran = $request->pembayaran;
         $var ->save();
 
         $invoice_code = $id;
