@@ -9,6 +9,7 @@ use App\Barang;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMailable;
 use Auth;
+use Excel;
 
 class DatapembelianController extends Controller
 {
@@ -117,7 +118,6 @@ class DatapembelianController extends Controller
       $data = Pembelian::find($id);
       return view('mitra.print',compact('data'));
     }
-
     /**
      * Remove the specified resource from storage.
      *

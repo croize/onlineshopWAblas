@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('export', function () {
+    return \Excel::download(new App\Exports\PembelianExport, 'invoices.xlsx');
+});
 
 //Operator Routes
 Route::resource('/admin/broadcast','BroadcastController');
@@ -37,13 +40,13 @@ Route::resource('/headadmin/content','HeadcontentController');
 Route::resource('/headadmin/users','MitraController');
 Route::get('headadmin/users/delete/{id}','MitraController@destroy');
 
-
 //Mitra Routes
 Route::resource('mitra/datapembelian','DatapembelianController');
 Route::resource('mitra/barang','MitrabarangController');
 Route::get('mitra/barang/delete/{id}','MitrabarangController@destroy');
 Route::resource('mitra/resi','ResiController');
 Route::get('mitra/print/{id}','DatapembelianController@print');
+
 
 //Konsumen pembelian
 Route::resource('pembelian','KonsumenbeliController');
