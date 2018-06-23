@@ -1,5 +1,9 @@
 @extends('layouts.utama')
 
+@section('title')
+  Mitra Barang
+@endsection
+
 @section('contentheader')
 <h1>
   Barang

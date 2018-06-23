@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendMailable;
+use App\Keuangan;
+use DB;
 use Auth;
 
 class HomeController extends Controller
@@ -32,6 +34,16 @@ class HomeController extends Controller
           return redirect('headadmin/broadcast');
         }elseif (Auth::user()->level == 2) {
           return redirect('mitra/datapembelian');
+        }elseif (Auth::user()->level == 3) {
+          $as = DB::table('keuangan')->where('user_id','=',Auth::user()->id)->value('id');
+          if ($as == NULL) {
+            $dt = new Keuangan();
+            $dt->user_id = Auth::user()->id;
+            $dt->save();
+            return redirect('reseller');
+          }elseif($as != NULL) {
+            return redirect('reseller');
+          }
         }
     }
 

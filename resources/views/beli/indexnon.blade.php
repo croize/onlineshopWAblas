@@ -91,7 +91,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="col-xs-12" style="padding-top: 50px;">
                 <center><h2>Form Pembelian</h2></center><br>
                 <div class="form">
-                    <form role="form" action="/pembelian/store/{{$mob}}" method="post">
+                    <form role="form" action="/pembelian/store" method="post">
                         {{csrf_field()}}
                         <div class="form-group">
                             <div class="form-row">

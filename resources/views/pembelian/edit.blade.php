@@ -88,13 +88,6 @@
                 <option value="MS" @if($data->pembayaran == "MS") selected @endif>Mandiri Syariah</option>
               </select>
             </div>
-            <div class="form-group">
-              <label for="">Status Pembayaran</label>
-              <select class="form-control" name="status">
-                <option value="0" @if($data->status == "0") selected @endif>Belum Lunas</option>
-                <option value="1" @if($data->status == "1") selected @endif>Lunas</option>
-              </select>
-            </div>
           </div>
           <!-- /.box-body -->
 

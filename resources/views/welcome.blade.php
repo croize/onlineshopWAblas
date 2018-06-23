@@ -5,7 +5,7 @@
 <link rel="icon" href="images/logo.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Modern Shoppe Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+<meta name="keywords" content="Modern Shoppe Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -25,7 +25,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--web-fonts-->
 <!--web-fonts-->
 <!--animation-effect-->
-<link href="{{ url('assetutama/css/animate.min.css')}}" rel="stylesheet"> 
+<link href="{{ url('assetutama/css/animate.min.css')}}" rel="stylesheet">
 <script src="{{ url('assetutama/js/wow.min.js')}}"></script>
 	<script>
 	 new WOW().init();
@@ -33,10 +33,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--//animation-effect-->
 <!--start-smooth-scrolling-->
 
-<script type="text/javascript" src="{{ url('assetutama/js/easing.js')}}"></script>	
+<script type="text/javascript" src="{{ url('assetutama/js/easing.js')}}"></script>
 <script type="text/javascript">
 		jQuery(document).ready(function($) {
-			$(".scroll").click(function(event){		
+			$(".scroll").click(function(event){
 				event.preventDefault();
 				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
 			});
@@ -75,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="container" style="padding-top: 20px;">
 		<div class="bordergaris" style="text-align: center;">
 			<h4> Penawaran Terbatas khusus HARI INI </h4><br>
-<?php 
+<?php
 
 // function untuk menampilkan nama hari ini dalam bahasa indonesia
 // di buat oleh malasngoding.com
@@ -88,7 +88,7 @@ function hari_ini(){
 			$hari_ini = "Minggu";
 		break;
 
-		case 'Mon':			
+		case 'Mon':
 			$hari_ini = "Senin";
 		break;
 
@@ -111,9 +111,9 @@ function hari_ini(){
 		case 'Sat':
 			$hari_ini = "Sabtu";
 		break;
-		
+
 		default:
-			$hari_ini = "Tidak di ketahui";		
+			$hari_ini = "Tidak di ketahui";
 		break;
 	}
 
@@ -129,7 +129,7 @@ echo " ". hari_ini();
 $tanggal= mktime(date("m"),date("d"),date("Y"));
 echo " <b>".date("d M Y", $tanggal)."</b> ";
 date_default_timezone_set('Asia/Jakarta');
-?> 
+?>
 <br>
 
 			penawaran ini berlaku untuk Hari ini saja , dapatkan penawaran ini hanaya dengan harga Rp. 299,000 saja . apabila dalam tempo waktu 1 x 24 jam , anda tidak mengambil kesempatan ini , maka kami akan menarik kembali promo spesial ini dan memberikan harga NORMAL senilai Rp. 500,000 kepada Anda.
@@ -141,7 +141,7 @@ date_default_timezone_set('Asia/Jakarta');
 				<div class="alert alert-danger" role="alert"><h3> Udah Mau Lebaran Muka masih Hitam ? Jerawatan ? Komedoan ? </h4></div>
 				<div class="alert alert-info" role="alert">
 					Gak usah khawatir lagi, Beautysky punya Paket Beautysky Acne Series yang bisa memutihkan , bikin cerah, dan membersihkan kulit wajah dari adanya komedo, jerawat dan Membasmi bekas – bekas jerawat seperti noda hitam.
-					
+
 				</div>
 			</center>
 		</div>
@@ -239,8 +239,8 @@ date_default_timezone_set('Asia/Jakarta');
 
 	<div class="banner">
 		<div class="container">
-			<div class="banner-text">			
-				<div class="col-sm-5 banner-left wow fadeInLeft animated" data-wow-delay=".5s">			
+			<div class="banner-text">
+				<div class="col-sm-5 banner-left wow fadeInLeft animated" data-wow-delay=".5s">
 
 
   <p class="bg-primary" style="font-family: arial;font-size: 22px;text-align: center;">PROMO LEBARAN</p><br>
@@ -263,12 +263,10 @@ date_default_timezone_set('Asia/Jakarta');
 							<script type="text/javascript" src="{{ url('assetutama/js/jquery.countdown.min.js')}}"></script>
 							<script type="text/javascript">
 								$('#example').countdown({
-									date: '06/06/2018 9:40:00',/*bulan , tgl , tahun*/
+									date: '06/24/2018 9:40:00',/*bulan , tgl , tahun*/
 									offset: -8,
 									day: 'Day',
 									days: 'Hari'
-								}, function () {
-									alert('Done!');
 								});
 							</script>
 					</div>
@@ -279,7 +277,7 @@ date_default_timezone_set('Asia/Jakarta');
 						<img class="img-responsive"  src="{{ url('assetutama/images/wow.jpeg')}}" alt="" id="myImg">
 					</div>
 						<div class="cscm" style="padding: 0px;margin: 0px;">
-							<h3 style="font-family: arial;font-size: 1.3em;padding: ;margin: 0px;margin-bottom: 10px;">Paket 
+							<h3 style="font-family: arial;font-size: 1.3em;padding: ;margin: 0px;margin-bottom: 10px;">Paket
 							Beautysky Acne Series</h3>
 						</div>
 					<div class="col-lg-12" style="padding: 0px 40px;">
@@ -294,7 +292,7 @@ date_default_timezone_set('Asia/Jakarta');
 <div class="hvbtn">
 <br>
 <form action="">
-<a href="" onclick=" window.open('https://promobeautysky.mobster.id/pembelian','_blank')">
+<a href="" onclick=" window.open('/pembelian/{{$y}}','_blank')">
 	<img src="{{ url('assetutama/images/button.jpg')}}" alt="" class="img-responsive">
 </a>
 </form>
@@ -366,7 +364,7 @@ date_default_timezone_set('Asia/Jakarta');
 			</div>
 		</div>
 	</div>
-	<!--//footer-->		
+	<!--//footer-->
 	<!--search jQuery-->
 
 	<!--//search jQuery-->
@@ -410,7 +408,7 @@ img.onclick = function(){
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() { 
+span.onclick = function() {
   modal.style.display = "none";
 }
 </script>

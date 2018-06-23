@@ -8,6 +8,7 @@ use App\Barang;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendorderMailable;
 use DB;
+use App\Keuangan;
 
 class PembelianController extends Controller
 {
@@ -49,70 +50,22 @@ class PembelianController extends Controller
     public function store(Request $request)
     {
         $var = new Pembelian();
-        for ($i=1; $i <= 999 ; $i++) {
-          if ($i <= 9) {
-            $vco = "00".$i;
-            $cekinvoice = DB::table('pembelian')->where('invoice_code','=',$vco)->orWhere('pembayaran','=','BCA')->orWhere('pembayaran','=','BNI')->orWhere('pembayaran','=','MS')->value('invoice_code');
-            if ($cekinvoice == NULL) {
-              $var->invoice_code = $vco;
-              $harga = DB::table('barang')->where('id','=',$request->barang_id)->value('totalharga');
-              $hargatotal = $harga * $request->jumlah_barang + $vco + $request->ongkir;
-              $var->hargatotal = $hargatotal;
-              $var->nama = $request->nama;
-              $var->barang_id = $request->barang_id;
-              $var->jumlah_barang = $request->jumlah_barang;
-              $var->alamat = $request->alamat;
-              $var->provinsi = $request->provinsi;
-              $var->kode_pos = $request->kode_pos;
-              $var->kecamatan = $request->kecamatan;
-              $var->kabupaten = $request->kabupaten;
-              $var->no_hp = $request->no_hp;
-              $var->ongkir = $request->ongkir;
-              break;
-            }
-          }elseif ($i <= 99) {
-            $vco = "0".$i;
-            $cekinvoice = DB::table('pembelian')->where('invoice_code','=',$vco)->orWhere('pembayaran','=','BCA')->orWhere('pembayaran','=','BNI')->orWhere('pembayaran','=','MS')->value('invoice_code');
-            if ($cekinvoice == NULL) {
-
-              $var->invoice_code = $vco;
-              $harga = DB::table('barang')->where('id','=',$request->barang_id)->value('totalharga');
-              $hargatotal = $harga * $request->jumlah_barang + $vco + $request->ongkir;
-              $var->hargatotal = $hargatotal;
-              $var->nama = $request->nama;
-              $var->barang_id = $request->barang_id;
-              $var->jumlah_barang = $request->jumlah_barang;
-              $var->alamat = $request->alamat;
-              $var->provinsi = $request->provinsi;
-              $var->kode_pos = $request->kode_pos;
-              $var->kecamatan = $request->kecamatan;
-              $var->kabupaten = $request->kabupaten;
-              $var->no_hp = $request->no_hp;
-              $var->ongkir = $request->ongkir;
-              break;
-            }
-          }elseif ($i <= 999) {
-            $vco = $i;
-            $cekinvoice = DB::table('pembelian')->where('invoice_code','=',$vco)->orWhere('pembayaran','=','BCA')->orWhere('pembayaran','=','BNI')->orWhere('pembayaran','=','MS')->value('invoice_code');
-            if ($cekinvoice == NULL) {
-              $var->invoice_code = $vco;
-              $harga = DB::table('barang')->where('id','=',$request->barang_id)->value('totalharga');
-              $hargatotal = $harga * $request->jumlah_barang + $vco + $request->ongkir;
-              $var->hargatotal = $hargatotal;
-              $var->nama = $request->nama;
-              $var->barang_id = $request->barang_id;
-              $var->jumlah_barang = $request->jumlah_barang;
-              $var->alamat = $request->alamat;
-              $var->provinsi = $request->provinsi;
-              $var->kode_pos = $request->kode_pos;
-              $var->kecamatan = $request->kecamatan;
-              $var->kabupaten = $request->kabupaten;
-              $var->no_hp = $request->no_hp;
-              $var->ongkir = $request->ongkir;
-              break;
-            }
-          }
-        }
+        $ic = Str::random_int(9);
+        $var->invoice_code = $ic;
+        $harga = DB::table('barang')->where('id','=',$request->barang_id)->value('totalharga');
+        $hargatotal = $harga * $request->jumlah_barang + $request->ongkir;
+        $var->hargatotal = $hargatotal;
+        $var->nama = $request->nama;
+        $var->barang_id = $request->barang_id;
+        $var->jumlah_barang = $request->jumlah_barang;
+        $var->alamat = $request->alamat;
+        $var->pembayaran = $request->pembayaran;
+        $var->provinsi = $request->provinsi;
+        $var->kode_pos = $request->kode_pos;
+        $var->kecamatan = $request->kecamatan;
+        $var->kabupaten = $request->kabupaten;
+        $var->no_hp = '62'.$request->no_hp;
+        $var->ongkir = $request->ongkir;
         $var->save();
         return redirect('admin/pembelian')->with('message', 'Data telah di Tambah.');
     }
@@ -189,12 +142,6 @@ class PembelianController extends Controller
         $alamat = $request->alamat;
         $no_hp = $request->no_hp;
         $provinsi = $request->provinsi;
-        if ($request->status == "1") {
-        $cekemail = DB::table('barang')->where('id','=',$request->barang_id)->value('user_id');
-        $emailfix = DB::table('users')->where('id','=',$cekemail)->value('email');
-        Mail::to($emailfix)->send(new SendorderMailable($invoice_code,$name,$nama_barang,$kecamatan,$kabupaten,$hargatotal,$jumlah,$kode_pos,$alamat,$no_hp,$provinsi));
-
-        }
         return redirect('admin/pembelian')->with('message', 'Data telah di Update.');
     }
 
@@ -204,6 +151,29 @@ class PembelianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     public function bayar(Request $request,$bayar)
+     {
+       $as = Pembelian::find($bayar);
+       $as->status = "1";
+       $as->save();
+
+       $cekmobsterid = DB::table('users')->where('mobsterid','=',$request->mobsterid)->value('id');
+       $cekdeposituser = DB::table('keuangan')->where('user_id','=',$cekmobsterid)->value('id');
+       $cekhargabarang = DB::table('barang')->where('id','=',$request->barang_id)->value('totalharga');
+
+       //Update deposit
+       $dp = Keuangan::find($cekdeposituser);
+       $tdeposit = ($cekhargabarang * 30 / 100) + $dp->deposit;
+       $dp->deposit = $tdeposit;
+       $dp->save();
+       
+       $cekemail = DB::table('barang')->where('id','=',$request->barang_id)->value('user_id');
+       $emailfix = DB::table('users')->where('id','=',$cekemail)->value('email');
+       Mail::to($emailfix)->send(new SendorderMailable($invoice_code,$name,$nama_barang,$kecamatan,$kabupaten,$hargatotal,$jumlah,$kode_pos,$alamat,$no_hp,$provinsi));
+       return redirect('admin/pembelian');
+     }
+
     public function destroy($id)
     {
 

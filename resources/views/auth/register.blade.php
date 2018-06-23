@@ -39,6 +39,63 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('no_hp') ? ' has-error' : '' }}">
+                            <label for="no_hp" class="col-md-4 control-label">No Handphone</label>
+
+                            <div class="col-md-6">
+                                <input id="no_hp" type="text" class="form-control" name="no_hp" value="{{ old('no_hp') }}" required autofocus>
+
+                                @if ($errors->has('no_hp'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('no_hp') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('alamat') ? ' has-error' : '' }}">
+                            <label for="alamat" class="col-md-4 control-label">Alamat</label>
+
+                            <div class="col-md-6">
+                                <input id="alamat" type="text" class="form-control" name="alamat" value="{{ old('alamat') }}" required autofocus>
+
+                                @if ($errors->has('alamat'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('alamat') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                        <label for="bank" class="col-md-4 control-label">Bank</label>
+
+                            <div class="col-md-6">
+                             <select class="form-control" name="bank">
+                                <option value="BRI">BRI</option>
+                                <option value="BNI">BNI</option>
+                                <option value="MANDIRI">MANDIRI</option>
+                                <option value="BCA">BCA</option>
+                              </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('no_rekening') ? ' has-error' : '' }}">
+                            <label for="no_rekening" class="col-md-4 control-label">No Rekening</label>
+
+                            <div class="col-md-6">
+                                <input id="no_rekening" type="text" class="form-control" name="no_rekening" value="{{ old('no_rekening') }}" required autofocus>
+
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('no_rekening') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 

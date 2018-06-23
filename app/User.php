@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','no_rekening','no_hp','alamat','mobsterid','bank',
     ];
 
     /**
@@ -38,6 +38,10 @@ class User extends Authenticatable
     public function barang()
     {
       return $this->hasMany('App\Barang');
+    }
+    public function keuangan()
+    {
+      return $this->hasMany('App\Keuangan');
     }
 
 }

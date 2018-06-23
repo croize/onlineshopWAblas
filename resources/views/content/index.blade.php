@@ -1,5 +1,9 @@
 @extends('layouts.utama')
 
+@section('title')
+  Data Content
+@endsection
+
 @section('contentheader')
 <h1>
   Content

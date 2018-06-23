@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
 
 class RegisterController extends Controller
 {
@@ -51,6 +52,10 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'alamat' => 'required',
+            'no_rekening' => 'required|numeric',
+            'no_hp' => 'required|numeric',
+            'bank' => 'required',
         ]);
     }
 
@@ -66,6 +71,11 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'alamat' => $data['alamat'],
+            'no_hp' => $data['no_hp'],
+            'no_rekening' => $data['no_rekening'],
+            'mobsterid' => Str::random_str(6),
+            'bank' => $data['bank'],
         ]);
     }
 }

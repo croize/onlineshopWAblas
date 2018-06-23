@@ -222,12 +222,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 <!-- Standard button -->
 <div class="hvbtn">
-	<br>
-	<form action="">
-	<a href="" onclick=" window.open('/pembelian/{{$x}}','_blank')">
-		<img src="{{ url('assetutama/images/button.jpg')}}" alt="" class="img-responsive">
-	</a>
-	</form>
+<br>
+<form action="">
+<a href="" onclick=" window.open('/pembelian','_blank')">
+	<img src="{{ url('assetutama/images/button.jpg')}}" alt="" class="img-responsive">
+</a>
+</form>
 </div>
 
 					</div>

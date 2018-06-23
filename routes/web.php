@@ -12,7 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('acneseries');
+});
+
+Route::get('/acneseries/{y}', function ($y) {
+    return view('welcome',compact('y'));
+});
+
+Route::get('/acneseries', function () {
+    return view('nonreselleracne');
 });
 
 Route::get('export', function () {
@@ -32,6 +40,7 @@ Route::get('admin/barang/delete/{id}','BarangController@destroy');
 
 Route::resource('/admin/pembelian','PembelianController');
 Route::get('admin/pembelian/delete/{id}','PembelianController@destroy');
+Route::put('admin/pembelian/pembayaran/{bayar}','PembelianController@bayar');
 
 //Head Admin Routes
 Route::resource('/headadmin/broadcast','HeadbroadcastController');
@@ -49,10 +58,19 @@ Route::get('mitra/print/{id}','DatapembelianController@print');
 
 
 //Konsumen pembelian
-Route::resource('pembelian','KonsumenbeliController');
+Route::get('pembelian','KonsumenbeliController@index');
+Route::get('pembelian/{mobsterid}','KonsumenbeliController@indexreseller');
+Route::post('pembelian/store/{mobsterid}','KonsumenbeliController@store');
+Route::post('pembelian/store','KonsumenbeliController@storenon');
 
+//Reseller
+Route::resource('reseller','ResellerController');
+
+Route::get('whitening/{x}', function ($x) {
+    return view('beautyskywhiteningseries',compact('x'));
+});
 Route::get('whitening', function () {
-    return view('beautyskywhiteningseries');
+    return view('whiteningnonreseller');
 });
 
 Route::resource('test','TestajaController');

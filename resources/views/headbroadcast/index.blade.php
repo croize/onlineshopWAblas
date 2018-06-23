@@ -1,5 +1,9 @@
 @extends('layouts.utama')
 
+@section('title')
+  Data Broadcast
+@endsection
+
 @section('contentheader')
 <h1>
   Broadcast

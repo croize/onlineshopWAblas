@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Paket Beautysky whitening Series</title>
-<link rel="icon" href="{{url('assetutama/images/logo.png')}}">
+<title>Promo Lebaran Paket Beautysky Acne and whitening beautysky </title>
+<link rel="icon" href="images/logo.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Modern Shoppe Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -11,13 +11,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--//for-mobile-apps -->
 <!--Custom Theme files -->
-<link href="{{url('assetutama/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
-<link href="{{url('assetutama/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{ url('assetutama/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{ url('assetutama/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
 
 <!--//Custom Theme files -->
 <!--js-->
-<script src="{{url('assetutama/js/jquery-1.11.1.min.js')}}"></script>
-<script src="{{url('assetutama/js/modernizr.custom.js')}}"></script>
+<script src="{{ url('assetutama/js/jquery-1.11.1.min.js')}}"></script>
+<script src="{{ url('assetutama/js/modernizr.custom.js')}}"></script>
 <!--//js-->
 <!--cart-->
 
@@ -25,15 +25,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--web-fonts-->
 <!--web-fonts-->
 <!--animation-effect-->
-<link href="{{url('assetutama/css/animate.min.css')}}" rel="stylesheet">
-<script src="{{url('assetutama/js/wow.min.js')}}"></script>
+<link href="{{ url('assetutama/css/animate.min.css')}}" rel="stylesheet">
+<script src="{{ url('assetutama/js/wow.min.js')}}"></script>
 	<script>
 	 new WOW().init();
 	</script>
 <!--//animation-effect-->
 <!--start-smooth-scrolling-->
 
-<script type="text/javascript" src="{{url('assetutama/js/easing.js')}}"></script>
+<script type="text/javascript" src="{{ url('assetutama/js/easing.js')}}"></script>
 <script type="text/javascript">
 		jQuery(document).ready(function($) {
 			$(".scroll").click(function(event){
@@ -74,23 +74,81 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<div class="container" style="padding-top: 20px;">
 		<div class="bordergaris" style="text-align: center;">
-			<h4> Penawaran Terbatas khusus MINGGU INI </h4><br>
+			<h4> Penawaran Terbatas khusus HARI INI </h4><br>
+<?php
 
-			Penawaran ini hanya berlaku 1 kali dalam waktu 1 minggu saja. Dapatkan harga spesial ini  Jika Anda tidak melakukan pembayaran segera (mak. 1x24 jam) setelah mengisi form pemesanan, maka kami berhak membatalkan harga spesial ini dan memberikan harga NORMAL senilai Rp. 500,000  kepada Anda.
+// function untuk menampilkan nama hari ini dalam bahasa indonesia
+// di buat oleh malasngoding.com
+
+function hari_ini(){
+	$hari = date ("D");
+
+	switch($hari){
+		case 'Sun':
+			$hari_ini = "Minggu";
+		break;
+
+		case 'Mon':
+			$hari_ini = "Senin";
+		break;
+
+		case 'Tue':
+			$hari_ini = "Selasa";
+		break;
+
+		case 'Wed':
+			$hari_ini = "Rabu";
+		break;
+
+		case 'Thu':
+			$hari_ini = "Kamis";
+		break;
+
+		case 'Fri':
+			$hari_ini = "Jumat";
+		break;
+
+		case 'Sat':
+			$hari_ini = "Sabtu";
+		break;
+
+		default:
+			$hari_ini = "Tidak di ketahui";
+		break;
+	}
+
+	return "<b>" . $hari_ini . "</b>";
+
+}
+
+echo " ". hari_ini();
+
+?>
+
+<?php
+$tanggal= mktime(date("m"),date("d"),date("Y"));
+echo " <b>".date("d M Y", $tanggal)."</b> ";
+date_default_timezone_set('Asia/Jakarta');
+?>
+<br>
+
+			penawaran ini berlaku untuk Hari ini saja , dapatkan penawaran ini hanaya dengan harga Rp. 299,000 saja . apabila dalam tempo waktu 1 x 24 jam , anda tidak mengambil kesempatan ini , maka kami akan menarik kembali promo spesial ini dan memberikan harga NORMAL senilai Rp. 500,000 kepada Anda.
+
 		</div>
 <br>
 		<div class="cptn">
 			<center>
 				<div class="alert alert-danger" role="alert"><h3> Udah Mau Lebaran Muka masih Hitam ? Jerawatan ? Komedoan ? </h4></div>
 				<div class="alert alert-info" role="alert">
-					Gak usah khawatir lagi, Beautysky punya Paket Beautysky Whitening Series yang bisa memutihkan , bikin cerah, dan membersihkan kulit wajah dari adanya komedo, jerawat dan Membasmi bekas – bekas jerawat seperti noda hitam.
+					Gak usah khawatir lagi, Beautysky punya Paket Beautysky Acne Series yang bisa memutihkan , bikin cerah, dan membersihkan kulit wajah dari adanya komedo, jerawat dan Membasmi bekas – bekas jerawat seperti noda hitam.
+
 				</div>
 			</center>
 		</div>
 
 
 </div>
-  <p class="bg-primary" style="font-family: arial;font-size: 20px;text-align: center;">Testimoni & Gallery</p><br>
+  <p class="bg-primary" style="font-family: arial;font-size: 20px;text-align: center;">TESTIMONI & GALERI</p><br>
 <div class="container">
 
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -104,6 +162,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <li data-target="#myCarousel" data-slide-to="5"></li>
       <li data-target="#myCarousel" data-slide-to="6"></li>
       <li data-target="#myCarousel" data-slide-to="7"></li>
+      <li data-target="#myCarousel" data-slide-to="8"></li>
 
     </ol>
 
@@ -111,34 +170,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     <div class="carousel-inner">
       <div class="item active">
-        <img src="{{url('assetutama/images/testimoni/beautysky-paket-jerawat-murah-gratis (1).jpeg')}}" alt="Testimoni Beautysky" style="width:100%;">
-      </div>
-
-      <div class="item">
-        <img src="{{url('assetutama/images/testimoni/beautysky-paket-jerawat-murah-gratis (11).jpeg')}}" alt="Testimoni Beautysky" style="width:100%;">
+        <img src="{{ url('assetutama/images/artis/cowo.jpeg')}}" alt="Testimoni Beautysky" style="width:100%;">
       </div>
       <div class="item">
-        <img src="{{url('assetutama/images/testimoni/beautysky-paket-jerawat-murah-gratis (3).jpeg')}}" alt="Testimoni Beautysky" style="width:100%;">
+        <img src="{{ url('assetutama/images/artis/ipan.jpeg')}}" alt="Testimoni Beautysky" style="width:100%;">
       </div>
       <div class="item">
-        <img src="{{url('assetutama/images/artis/art (1).jpeg')}}" alt="Testimoni Beautysky" style="width:100%;">
+        <img src="{{ url('assetutama/images/artis/art (2).jpeg')}}" alt="Testimoni Beautysky" style="width:100%;">
       </div>
       <div class="item">
-        <img src="{{url('assetutama/images/artis/art (2).jpeg')}}" alt="Testimoni Beautysky" style="width:100%;">
+        <img src="{{ url('assetutama/images/artis/art (3).jpeg')}}" alt="Testimoni Beautysky" style="width:100%;">
       </div>
       <div class="item">
-        <img src="{{url('assetutama/images/artis/art (3).jpeg')}}" alt="Testimoni Beautysky" style="width:100%;">
+        <img src="{{ url('assetutama/images/testimoni/jerawat.jpeg')}}" alt="Testimoni Beautysky" style="width:100%;">
       </div>
       <div class="item">
-        <img src="{{url('assetutama/images/produk/p.jpeg')}}" alt="Testimoni Beautysky" style="width:100%;">
+        <img src="{{ url('assetutama/images/testimoni/beautysky-paket-jerawat-murah-gratis (1).jpeg')}}" alt="Testimoni Beautysky" style="width:100%;">
       </div>
       <div class="item">
-        <img src="{{url('assetutama/images/produk/p.jpg')}}" alt="Testimoni Beautysky" style="width:100%;">
+        <img src="{{ url('assetutama/images/testimoni/beautysky-paket-jerawat-murah-gratis (3).jpeg')}}" alt="Testimoni Beautysky" style="width:100%;">
       </div>
-
-
-
-
+      <div class="item">
+        <img src="{{ url('assetutama/images/produk/p.jpeg')}}" alt="Testimoni Beautysky" style="width:100%;">
+      </div>
+      <div class="item">
+        <img src="{{ url('assetutama/images/produk/p.jpg')}}" alt="Testimoni Beautysky" style="width:100%;">
+      </div>
 
     </div>
 
@@ -156,9 +213,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--=======END SLIDER====-->
 <div class="bpm">
 	<br>
-  <p class="bg-primary" style="font-family: arial;font-size: 22px;text-align: center;">Apakah Sudah Terdaftar BPOM Resmi?</p><br>
+  <p class="bg-primary" style="font-family: arial;font-size: 22px;text-align: center;">APAKAH SUDAH TERDAFTAR BPOM RESMI ?</p><br>
   <div class="container">
-	<img src="{{url('assetutama/images/bpom.jpg')}}" class="img-responsive">
+	<img src="{{ url('assetutama/images/bpom.jpg')}}" class="img-responsive">
+	</div>
+</div>
+
+<!--=======END SLIDER====-->
+<div class="wrq">
+	<br>
+  <p class="bg-primary" style="font-family: arial;font-size: 22px;text-align: center;">APA KEUNGGULAN PRODUK INI?</p><br>
+  <div class="container">
+	<img src="{{ url('assetutama/images/produk/kenapa.jpeg')}}" class="img-responsive" align="center" style="margin: 0 auto;">
 	</div>
 </div>
 
@@ -177,12 +243,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="col-sm-5 banner-left wow fadeInLeft animated" data-wow-delay=".5s">
 
 
-  <p class="bg-primary" style="font-family: arial;font-size: 22px;text-align: center;">PROMO MINGGU INI</p><br>
+  <p class="bg-primary" style="font-family: arial;font-size: 22px;text-align: center;">PROMO LEBARAN</p><br>
 
 <h4 id="coret">Rp 500.000</h4>
+<p style="padding-bottom: 10px;font-size: 22px;">DISKON 40%:</p>
 
-					<h3 style="padding: 0;margin: 0;font-size: 50px;background-color: red;padding: 0px  20px;margin-top: 10px;margin-top: 0px;">Rp. 300,000</h3>
-					<h3 style="margin-bottom: 0px;">Free Ongkir</h3><br>
+					<h3 style="padding: 0;margin: 0;font-size: 50px;background-color: red;padding: 0px  20px;margin-top: 10px;margin-top: 0px;">Rp. 299,000</h3>
+					<h3 style="margin-bottom: 0px;">Free Ongkir *</h3><br>
 					<i style="color: white;">*free ongkos kirim senilai Rp.30.000</i><br>
 					<h4 style="" id="blck">Jangan Sampai Kehabisan !</h4><br>
 					<div class="count main-row">
@@ -193,10 +260,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li><span style="color: black;" class="seconds">00</span><p class="seconds_text">Seconds</p></li>
 						</ul>
 							<div class="clearfix"> </div>
-							<script type="text/javascript" src="{{url('assetutama/js/jquery.countdown.min.js')}}"></script>
+							<script type="text/javascript" src="{{ url('assetutama/js/jquery.countdown.min.js')}}"></script>
 							<script type="text/javascript">
 								$('#example').countdown({
-									date: '06/04/2018 08:50:00',
+									date: '06/24/2018 9:40:00',/*bulan , tgl , tahun*/
 									offset: -8,
 									day: 'Day',
 									days: 'Hari'
@@ -207,27 +274,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-sm-7  wow fadeInRight animated" data-wow-delay=".5s" style="color: white;font-size: 20px;">
 					<div class="col-lg-12"  style="padding-bottom: 15px;padding-top: 0px;">
-						<img class="img-responsive"  src="{{url('assetutama/images/white.jpg')}}" alt="" id="myImg">
+						<img class="img-responsive"  src="{{ url('assetutama/images/wow.jpeg')}}" alt="" id="myImg">
 					</div>
 						<div class="cscm" style="padding: 0px;margin: 0px;">
-							<h3 style="font-family: arial;font-size: 1.3em;padding: ;margin: 0px;margin-bottom: 10px;">Paket Beautysky whitening Series</h3>
+							<h3 style="font-family: arial;font-size: 1.3em;padding: ;margin: 0px;margin-bottom: 10px;">Paket
+							Beautysky Acne Series</h3>
 						</div>
 					<div class="col-lg-12" style="padding: 0px 40px;">
 						<ul type="square">
-							<li>1 Flawless Night Cream</li>
-							<li>1 Perfect Glow Day Cream</li>
-							<li>1 Facial Toner </li>
-							<li>1 Facial Cleanser (sabun cair)</li>
-							<li>1 Whitening Vitamin Cream. </li>
+							<li>1 Acne day cream</li>
+							<li>1 Acne night cream</li>
+							<li>1 Acne toner </li>
+							<li>1 Acne facial wash</li>
+							<li>1 Acne cream </li>
 						</ul>
 <!-- Standard button -->
 <div class="hvbtn">
-	<br>
-	<form action="">
-	<a href="" onclick=" window.open('/pembelian/{{$x}}','_blank')">
-		<img src="{{ url('assetutama/images/button.jpg')}}" alt="" class="img-responsive">
-	</a>
-	</form>
+<br>
+<form action="">
+<a href="" onclick=" window.open('/pembelian','_blank')">
+	<img src="{{ url('assetutama/images/button.jpg')}}" alt="" class="img-responsive">
+</a>
+</form>
 </div>
 
 					</div>
@@ -235,7 +303,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="col-lg-12" style="padding-top: 30px;">
 	<hr>
 	<div class="col-xs-4">
-		<img src="{{url('assetutama/images/bp.png')}}" alt="" class="img-responsive">
+		<img src="{{ url('assetutama/images/bp.png')}}" alt="" class="img-responsive">
 	</div>
 	<div class="col-xs-8">
 		<p style="font-size: 10px;">
@@ -248,10 +316,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<hr>
 	<div class="container">
 		<hr>
-		<img src="{{url('assetutama/images/bank.png')}}" class="img-responsive" alt="">
+		<img src="{{ url('assetutama/images/bank.png')}}" class="img-responsive" alt="">
 	</div>
 	<hr>
-	<img src="{{url('assetutama/images/baja.png')}}" class="img-responsive" alt="" align="center">
+	<img src="{{ url('assetutama/images/baja.png')}}" class="img-responsive" alt="" align="center">
 </div>
 
 
@@ -269,11 +337,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="footer-info">
 				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
-					<h4 class="footer-logo"><a href="index.html">Mobster <b>Ads</b> <span class="tag">Everything for Kids world </span> </a></h4>
+					<h4 class="footer-logo" style="font-family: arial;"><a href="index.html" style="font-family: arial;">Mobster <b>Ads</b> <span class="tag">Everything for Kids world </span> </a></h4>
 					<p>© 2018 Mobster Ads . All rights reserved | Design by <a href="http://mobster.id" target="_blank">Mobster id</a></p>
 				</div>
 				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
-					<h3>Popular</h3>
+					<h3 style="font-family: arial;">Popular</h3>
 					<ul>
 						<li><a href="#">About Us</a></li>
 						<li><a href="#">new</a></li>
@@ -283,7 +351,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".9s">
-					<h3>Subscribe</h3>
+					<h3 style="font-family: arial;">Subscribe</h3>
 					<p>Untuk Info dan Produk  <br> dan Penawaran Menarik lainya   </p>
 					<br>
 					<center>
@@ -347,6 +415,6 @@ span.onclick = function() {
 
 
 
-    <script src="{{url('assetutama/js/bootstrap.js')}}"></script>
+    <script src="{{ url('assetutama/js/bootstrap.js')}}"></script>
 </body>
 </html>
