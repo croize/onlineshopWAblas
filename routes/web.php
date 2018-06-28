@@ -122,7 +122,7 @@ Route::get('cpanel', function () {
     return redirect('/');
 });
 
-Route::get('sms/{linkfrom}/{phone}/{isisms}','SmsController@send');
+Route::get('sms/{linkfrom}/{phone}/{isisms}/{iduser}','SmsController@send');
 
 
 Auth::routes();

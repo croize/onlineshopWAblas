@@ -27,7 +27,7 @@ class ResellermanageController extends Controller
       $as->save();
       $linkfrom = "accountmanage";
       $isisms = 'Terima kasih Anda telah bergabung dengan Agen MOBSTER.Wujudkan mimpi Anda untuk mewujudkan penghasilan tak terbatas melalui handphone Anda.CODE MOBSTER Anda adalah '.$as->mobsterid.' . Kesuksesanmu ada di depan mata.';
-      return redirect('sms/'.$linkfrom.'/62'.$as->no_hp.'/'.$isisms);
+      return redirect('sms/'.$linkfrom.'/62'.$as->no_hp.'/'.$isisms.'/'.$id);
     }
 
     public function pendatapan()
@@ -45,7 +45,7 @@ class ResellermanageController extends Controller
       $as->save();
       $linkfrom = "keuangan";
       $isisms = 'Terima kasih Anda telah menjadi bagian dari agen MOBSTER. PENGHASILAN ANDA BERHASIL KAMI MASUKAN KE REKENING YANG ANDA DAFTARKAN. Silahkan cek rekening Anda.';
-      return redirect('sms/'.$linkfrom.'/62'.$cekuser->no_hp.'/'.$isisms);
+      return redirect('sms/'.$linkfrom.'/62'.$cekuser->no_hp.'/'.$isisms.'/'.$request->userid);
     }
 
 }

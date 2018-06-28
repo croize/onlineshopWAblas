@@ -47,6 +47,10 @@ class User extends Authenticatable
     {
       return $this->hasMany('App\Keuangan');
     }
+    public function message()
+    {
+      return $this->hasMany('App\Reportmessage');
+    }
     public function linkmitra()
     {
       return $this->hasMany('App\Listlink');
