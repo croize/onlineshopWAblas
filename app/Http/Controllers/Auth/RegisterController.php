@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Str;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -73,6 +74,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'alamat' => $data['alamat'],
             'no_hp' => $data['no_hp'],
+            'invoice_code' => Str::random_int(7),
             'no_rekening' => $data['no_rekening'],
             'mobsterid' => Str::random_str(6),
             'bank' => $data['bank'],

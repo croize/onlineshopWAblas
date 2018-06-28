@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="icon" href="{{url('assetdashboard/dist/img/Mobster Logo Fix-02.png')}}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>@yield('title')</title>
   <!-- Tell the browser to be responsive to screen width -->
@@ -119,13 +120,33 @@
 
         @if(Auth::user()->level == 0)
         <li>
+          <a href="/headadmin">
+            <i class="fa fa-home"></i> <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
           <a href="/headadmin/broadcast">
             <i class="fa fa-paper-plane-o"></i> <span>Broadcast</span>
           </a>
         </li>
         <li>
+          <a href="/headadmin/reseller">
+            <i class="fa fa-users"></i> <span>Data Reseller</span>
+          </a>
+        </li>
+        <li>
           <a href="/headadmin/users">
             <i class="fa fa-users"></i> <span>Data Users</span>
+          </a>
+        </li>
+        <li>
+          <a href="/headadmin/keuangan">
+            <i class="fa fa-money"></i> <span>Pendapatan Agen</span>
+          </a>
+        </li>
+        <li>
+          <a href="/headadmin/listlink">
+            <i class="fa fa-link"></i> <span>Link Mitra</span>
           </a>
         </li>
         @elseif(Auth::user()->level == 1)
@@ -164,6 +185,11 @@
         <li>
           <a href="/reseller">
             <i class="fa fa-home"></i> <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/reseller/order">
+            <i class="fa fa-shopping-cart"></i> <span>Data Order</span>
           </a>
         </li>
         @endif

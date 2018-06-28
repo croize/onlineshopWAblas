@@ -78,6 +78,17 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="barang_id" value="{{$c->barang_id}}">
                         <input type="hidden" name="mobsterid" value="{{$c->mobsterid}}">
+                        <input type="hidden" name="invoice_code" value="{{$c->invoice_code}}">
+                        <input type="hidden" name="kecamatan" value="{{$c->kecamatan}}">
+                        <input type="hidden" name="kabupaten" value="{{$c->kabupaten}}">
+                        <input type="hidden" name="hargatotal" value="{{$c->hargatotal}}">
+                        <input type="hidden" name="jumlah" value="{{$c->jumlah_barang}}">
+                        <input type="hidden" name="kode_pos" value="{{$c->kode_pos}}">
+                        <input type="hidden" name="no_hp" value="{{$c->no_hp}}">
+                        <input type="hidden" name="provinsi" value="{{$c->provinsi}}">
+                        <input type="hidden" name="name" value="{{$c->user['name']}}">
+                        <input type="hidden" name="nama_barang" value="{{$c->barang['nama_barang']}}">
+                        <input type="hidden" name="alamat" value="{{$c->alamat}}">
                         <input type="hidden" name="_method" value="put">
                     </form>
                     @endif

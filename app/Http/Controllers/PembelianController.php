@@ -167,16 +167,28 @@ class PembelianController extends Controller
        $tdeposit = ($cekhargabarang * 30 / 100) + $dp->deposit;
        $dp->deposit = $tdeposit;
        $dp->save();
-       
+
        $cekemail = DB::table('barang')->where('id','=',$request->barang_id)->value('user_id');
        $emailfix = DB::table('users')->where('id','=',$cekemail)->value('email');
+
+       $invoice_code = $request->invoice_code;
+       $name = $request->name;
+       $nama_barang = $request->nama_barang;
+       $kecamatan = $request->kecamatan;
+       $kabupaten = $request->kabupaten;
+       $hargatotal = $request->hargatotal;
+       $jumlah = $request->jumlah;
+       $kode_pos = $request->kode_pos;
+       $alamat = $request->alamat;
+       $no_hp = $request->no_hp;
+       $provinsi = $request->provinsi;
+
        Mail::to($emailfix)->send(new SendorderMailable($invoice_code,$name,$nama_barang,$kecamatan,$kabupaten,$hargatotal,$jumlah,$kode_pos,$alamat,$no_hp,$provinsi));
        return redirect('admin/pembelian');
      }
 
     public function destroy($id)
     {
-
         $var = Pembelian::find($id);
         $var ->delete();
         return redirect('admin/pembelian')->with('message', 'Data telah di Hapus.');

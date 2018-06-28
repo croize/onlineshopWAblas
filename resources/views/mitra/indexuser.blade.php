@@ -1,5 +1,9 @@
 @extends('layouts.utama')
 
+@section('title')
+  Data Mitra
+@endsection
+
 @section('contentheader')
 <h1>
   Data Mitra

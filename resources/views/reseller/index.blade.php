@@ -6,21 +6,8 @@
 
 @section('content')
 <div class="row">
-  <div class="col-lg-3 col-xs-6">
-    <!-- small box -->
-    <div class="small-box bg-green">
-      <div class="inner">
-        <p style="font-size: 38px;font-weight: bold;">Rp. {{ number_format($deposit, 0, ',', ',') }}</p>
-
-        <p>Pendapatan</p>
-      </div>
-      <div class="icon">
-        <i class="fa fa-money"></i>
-      </div>
-    </div>
-  </div>
   <!-- ./col -->
-  <div class="col-lg-3 col-xs-6">
+  <div class="col-lg-4 col-xs-12">
     <!-- small box -->
     <div class="small-box bg-aqua">
       <div class="inner">
@@ -34,7 +21,7 @@
     </div>
   </div>
   <!-- ./col -->
-  <div class="col-lg-3 col-xs-6">
+  <div class="col-lg-4 col-xs-12">
     <!-- small box -->
     <div class="small-box bg-purple">
       <div class="inner">
@@ -48,7 +35,7 @@
     </div>
   </div>
   <!-- ./col -->
-  <div class="col-lg-3 col-xs-6">
+  <div class="col-lg-4 col-xs-12">
     <!-- small box -->
     <div class="small-box bg-maroon">
       <div class="inner">
@@ -76,6 +63,37 @@
     </div>
   </div>
 </div>
+
+@elseif(Auth::user()->status_reseller == "1")
+<div class="row">
+  <div class="col-md-12">
+    <div class="callout callout-success">
+      <h4>Akun Anda sudah aktif</h4>
+
+      <p>Untuk memulai broadcast, Anda dapat melihat daftar content yang ada di table Broadcast.</p>
+    </div>
+  </div>
+</div>
+@elseif(Auth::user()->status_reseller == "2")
+<div class="row">
+  <div class="col-md-12">
+    <div class="callout callout-warning">
+      <h4>Proses Pengajuan</h4>
+
+      <p>Pembayaran Anda sedang kami proses, kami akan cek pembayaran Anda saat jam kerja (9:00 - 17:00).</p>
+    </div>
+  </div>
+</div>
+@endif
+
+@if(Session::get('message') != NULL)
+<div class="alert alert-success alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h4><i class="icon fa fa-check"></i> Alert!</h4>
+  {{Session::get('message')}}
+</div>
+@endif
+
 <div class="row">
   <div class="col-md-3">
 
@@ -85,6 +103,30 @@
         <img class="profile-user-img img-responsive img-circle" src="{{url('assetdashboard/dist/img/Mobster Logo Fix-02.png')}}" alt="User profile picture">
 
         <h3 class="profile-username text-center">{{Auth::user()->name}}</h3>
+        <ul class="list-group list-group-unbordered">
+          <li class="list-group-item">
+            <b>Virtual Account</b> <a class="pull-right">8888-{{Auth::user()->invoice_code}}</a>
+          </li>
+          <li class="list-group-item">
+            <b>Penghasilan</b> <a class="pull-right">Rp. {{ number_format($deposit, 0, ',', '.') }} ,-</a><br>
+            <b>Ditransfer tanggal 2 dan 17</b>
+          </li>
+        </ul>
+        @if(Auth::user()->status_reseller == "0")
+        <a href="" onclick="event.preventDefault();document.getElementById('pengajuan{{Auth::user()->id}}').submit();" class="btn btn-danger btn-block">
+            <b>Click to Active your Account</b>
+        </a>
+        <form id="pengajuan{{Auth::user()->id}}" action="/reseller/active/{{Auth::user()->id}}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+            <input type="hidden" name="_method" value="put">
+        </form>
+        @elseif(Auth::user()->status_reseller == "1")
+        <a href="#" class="btn btn-success btn-block" disabled><b>Active</b></a>
+        <!-- Status reseller 0 = Tidak Aktif, 1 = Aktif , 2 = Pending -->
+
+        @elseif(Auth::user()->status_reseller == "2")
+        <a href="#" class="btn btn-warning btn-block"><b>Proses Pengecekan</b></a>
+        @endif
       </div>
       <!-- /.box-body -->
     </div>
@@ -113,7 +155,7 @@
 
         <strong><i class="fa fa-file-text-o margin-r-5"></i> MobsterID</strong>
 
-        <p>{{Auth::user()->mobsterid}}</p>
+        <p>@if(Auth::user()->status_reseller == "1") {{Auth::user()->mobsterid}} @else - @endif</p>
       </div>
       <!-- /.box-body -->
     </div>
@@ -123,61 +165,106 @@
   <div class="col-md-9">
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#settings" data-toggle="tab">Settings</a></li>
+        <li class="active"><a href="#link" data-toggle="tab">Link</a></li>
+        <li><a href="#broadcast" data-toggle="tab">Broadcast</a></li>
       </ul>
       <div class="tab-content">
-        <div class="active tab-pane" id="settings">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputName" placeholder="Name">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-              <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputName" placeholder="Name">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-              <div class="col-sm-10">
-                <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                  </label>
+        <div class="active tab-pane" id="link">
+          @if(Auth::user()->status_reseller == "1")
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Data Mitra</h3><br>
+                  <a href="/reseller" class="btn btn-success"> <i class="fa fa-refresh"></i> Refresh</a>
                 </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                  <form class="" action="/" method="post">
+                      <table class="table table-hover">
+                        <tr>
+                          <th>Nama Mitra</th>
+                          <th>Link Mitra</th>
+                        </tr>
+                        <tr>
+                          @foreach($listlink as $c)
+                            <tr>
+                              <td>{{$c->name}}</td>
+                              <td><ul>@foreach($c->linkmitra as $yu)
+                                <li>{{$yu->link}}/{{Auth::user()->mobsterid}}</li> @endforeach</ul></td>
+                            </tr>
+                          @endforeach
+                        </tr>
+                      </table>
+                  </form>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+          </div>
+          @else
+          <div class="row">
+            <div class="col-md-12">
+              <div class="callout callout-warning">
+                <h4>Akun Anda tidak dapat membuka fitur ini</h4>
+
+                <p>Untuk mengaktifkan akun reseller Anda, silahkan melakukan pembayaran sebesar Rp. 100.000 dengan Virtual Account Bank kami.</p>
               </div>
             </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-danger">Submit</button>
+          </div>
+          @endif
+        </div>
+        <div class="tab-pane" id="broadcast">
+          @if(Auth::user()->status_reseller == "1")
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Broadcast</h3><br>
+                  <a href="/reseller" class="btn btn-success"> <i class="fa fa-refresh"></i> Refresh</a>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+
+                      <table class="table table-hover">
+                        <tr>
+                          <th>No</th>
+                          <th>Nama Barang</th>
+                          <th>Content</th>
+                          <th>Asset</th>
+                        </tr>
+                        <form class="" id="finish" action="/admin/broadcast/finish" method="post">
+                        @foreach($data as $c)
+                          {{csrf_field()}}
+                        <tr>
+                          <td>{{$loop->iteration}}</td>
+                          <td>{{$c->nama}}</td>
+                          @foreach($c->content as $cnt)
+                            <td>{{$cnt->content}}</td>
+                            <td> <a href="{!! $cnt->asset !!}">{!! $cnt->asset !!}</a></td>
+                          @endforeach
+                        </tr>
+                        @endforeach
+                        </form>
+                      </table>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+            </div>
+          </div>
+          @else
+          <div class="row">
+            <div class="col-md-12">
+              <div class="callout callout-warning">
+                <h4>Akun Anda tidak dapat membuka fitur ini</h4>
+
+                <p>Untuk mengaktifkan akun reseller Anda, silahkan melakukan pembayaran sebesar Rp. 100.000 dengan Virtual Account Bank kami.</p>
               </div>
             </div>
-          </form>
+          </div>
+          @endif
         </div>
         <!-- /.tab-pane -->
       </div>
@@ -187,54 +274,7 @@
   </div>
   <!-- /.col -->
 </div>
-@elseif(Auth::user()->status_reseller == "1")
-<div class="row">
-  <div class="col-md-12">
-    <div class="callout callout-success">
-      <h4>Akun Anda sudah aktif</h4>
 
-      <p>Untuk memulai broadcast, Anda dapat melihat daftar content yang ada di table Broadcast.</p>
-    </div>
-  </div>
-</div>
-@endif
 
-<div class="row">
-  <div class="col-xs-12">
-    <div class="box">
-      <div class="box-header">
-        <h3 class="box-title">Broadcast</h3><br>
-        <a href="/reseller" class="btn btn-success"> <i class="fa fa-refresh"></i> Refresh</a>
-      </div>
-      <!-- /.box-header -->
-      <div class="box-body table-responsive no-padding">
-
-            <table class="table table-hover">
-              <tr>
-                <th>No</th>
-                <th>Nama Barang</th>
-                <th>Content</th>
-                <th>Asset</th>
-              </tr>
-              <form class="" id="finish" action="/admin/broadcast/finish" method="post">
-              @foreach($data as $c)
-                {{csrf_field()}}
-              <tr>
-                <td>{{$loop->iteration}}</td>
-                <td>{{$c->nama}}</td>
-                @foreach($c->content as $cnt)
-                  <td>{{$cnt->content}}</td>
-                  <td> <a href="{!! $cnt->asset !!}">{!! $cnt->asset !!}</a></td>
-                @endforeach
-              </tr>
-              @endforeach
-              </form>
-            </table>
-      </div>
-      <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-  </div>
-</div>
 
 @endsection

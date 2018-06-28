@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Keuangan extends Model
+class Listlink extends Model
 {
-    protected $table = 'keuangan';
+    protected $table = 'listlink';
     public $timestamps = false;
-    public function user()
+    public function mitra()
     {
       return $this->belongsTo('App\User','user_id','id');
     }
