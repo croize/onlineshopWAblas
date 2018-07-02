@@ -14,6 +14,19 @@
 @endsection
 
 @section('content')
+@if(Session::get('message') != NULL)
+<div class="alert alert-success alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h4><i class="icon fa fa-check"></i> Alert!</h4>
+  {{Session::get('message')}}
+</div>
+@elseif(Session::get('error') != NULL)
+<div class="alert alert-danger alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h4><i class="icon fa fa-check"></i> Alert!</h4>
+  {{Session::get('error')}}
+</div>
+@endif
 <div class="row">
   <div class="col-xs-12">
     <div class="box">

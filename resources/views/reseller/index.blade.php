@@ -63,27 +63,6 @@
     </div>
   </div>
 </div>
-
-@elseif(Auth::user()->status_reseller == "1")
-<div class="row">
-  <div class="col-md-12">
-    <div class="callout callout-success">
-      <h4>Akun Anda sudah aktif</h4>
-
-      <p>Untuk memulai broadcast, Anda dapat melihat daftar content yang ada di table Broadcast.</p>
-    </div>
-  </div>
-</div>
-@elseif(Auth::user()->status_reseller == "2")
-<div class="row">
-  <div class="col-md-12">
-    <div class="callout callout-warning">
-      <h4>Proses Pengajuan</h4>
-
-      <p>Pembayaran Anda sedang kami proses, kami akan cek pembayaran Anda saat jam kerja (9:00 - 17:00).</p>
-    </div>
-  </div>
-</div>
 @endif
 
 @if(Session::get('message') != NULL)
